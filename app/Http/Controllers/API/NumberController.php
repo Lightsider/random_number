@@ -30,10 +30,12 @@ class NumberController extends BaseController
      */
     public function generate(Request $request)
     {
-        $input = $request->all();
-
+        $uid = Str::random(env('UNIQUE_ID_LENGTH'));
+        while(!empty(Number::where("unique_id",$uid)->first())) {
+            $uid = Str::random(env('UNIQUE_ID_LENGTH'));
+        }
         $number = Number::create([
-            "unique_id" => Str::random(env('UNIQUE_ID_LENGTH')),
+            "unique_id" => $uid,
             "number" => rand(),
         ]);
 

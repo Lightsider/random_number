@@ -15,7 +15,7 @@ class CreateNumbersTable extends Migration
     {
         Schema::create('numbers', function (Blueprint $table) {
             $table->id();
-            $table->string("unique_id",env('UNIQUE_ID_LENGTH'));
+            $table->string("unique_id",env('UNIQUE_ID_LENGTH'))->unique();
             $table->integer("number");
             $table->timestamps();
         });
