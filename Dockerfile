@@ -53,7 +53,3 @@ USER www
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 CMD ["php-fpm"]
-
-RUN composer install -d /var/www/ 
-RUN php /var/www/artisan key:generate
-RUN php /var/www/artisan artisan migrate
